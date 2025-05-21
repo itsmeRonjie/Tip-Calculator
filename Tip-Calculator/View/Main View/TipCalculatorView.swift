@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct TipCalculatorView: View {
-    @State private var tipPercentage = 20
-    @State private var split = 1
-    @State private var bill = 0.0
-    @State private var isFocused = false
+    @State private var tipModel: TipModel = TipModel(
+        tipPercentage: 20,
+        split: 1,
+        bill: 0.0
+    )
+    
+    @State private var isFocused: Bool = false
     
     let maxSplit: Int = 10
-
+    
     var body: some View {
         ZStack {
-            Color
-                .blue
-                .opacity(0.3)
-                .ignoresSafeArea()
+            BackgroundView()
             
             VStack {
                 Text("Title View")
@@ -29,26 +29,33 @@ struct TipCalculatorView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Enter Total View")
+                    
                     Text("Choose Tip View")
-
                 }
-                Text("Split View")
                 
+                Text("Split View")
+
                 Spacer()
                 
                 if !isFocused {
-                    Text("Payment Summary View")
+                    PaymentSummaryView(tipModel: tipModel)
                     Spacer()
                 }
             }
             .padding()
         }
         .onTapGesture {
-            print("Implements tap outside textfield")
+            UIApplication
+                .shared
+                .sendAction(
+                    #selector(UIResponder.resignFirstResponder),
+                    to: nil,
+                    from: nil,
+                    for: nil
+                )
         }
     }
 }
-
 #Preview {
     TipCalculatorView()
 }
