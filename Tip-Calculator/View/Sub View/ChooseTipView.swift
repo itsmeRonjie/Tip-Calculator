@@ -20,6 +20,10 @@ struct ChooseTipView: View {
         horizontalSizeClass == .regular && verticalSizeClass == .regular
     }
     
+    var isPortraitPhone: Bool {
+        horizontalSizeClass == .compact && verticalSizeClass == .regular
+    }
+    
     var font: Font {
         isIPad ? .title : .body
     }
@@ -54,15 +58,30 @@ struct ChooseTipView: View {
                 }
                 
                 HStack {
-                    SelectButtonView(
-                        percentage: TipPercentage.twentyFive.rawValue,
-                        selectedTip: $selectedTip,
-                        tipPercentage: $tipPercentage
-                    )
-                    CustomTipView(
-                        selectedTip: $selectedTip,
-                        tipPercentage: $tipPercentage
-                    )
+                    if isIPad || isPortraitPhone {
+                        SelectButtonView(
+                            percentage: TipPercentage.twentyFive.rawValue,
+                            selectedTip: $selectedTip,
+                            tipPercentage: $tipPercentage
+                        )
+                        
+                        CustomTipView(
+                            selectedTip: $selectedTip,
+                            tipPercentage: $tipPercentage
+                        )
+                        
+                    } else {
+                        SelectButtonView(
+                            percentage: TipPercentage.twentyFive.rawValue,
+                            selectedTip: $selectedTip,
+                            tipPercentage: $tipPercentage
+                        )
+                        
+                        CustomTipView(
+                            selectedTip: $selectedTip,
+                            tipPercentage: $tipPercentage
+                        )
+                    }
                 }
             }
         }

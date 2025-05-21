@@ -41,12 +41,12 @@ struct CustomTipView: View {
             .foregroundStyle(fgColor)
             .padding()
             .background(bgColor.opacity(0.7))
-            .clipShape(Capsule())
+            .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: fgColor.opacity(0.3), radius: 3, x: 2, y: 2)
             
             Text("Custom")
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(isSelected ? Color.secondary : Color.white)
         }
     }
 }
