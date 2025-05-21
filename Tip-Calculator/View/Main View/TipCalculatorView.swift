@@ -33,7 +33,7 @@ struct TipCalculatorView: View {
                     Text("Choose Tip View")
                 }
                 
-                Text("Split View")
+                SplitView(split: $tipModel.split, alignment: .leading)
 
                 Spacer()
                 
