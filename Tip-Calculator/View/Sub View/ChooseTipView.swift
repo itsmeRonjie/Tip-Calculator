@@ -55,10 +55,7 @@ struct ChooseTipView: View {
                         selectedTip: $selectedTip,
                         tipPercentage: $tipPercentage
                     )
-                }
-                
-                HStack {
-                    if isIPad || isPortraitPhone {
+                    if isIPad {
                         SelectButtonView(
                             percentage: TipPercentage.twentyFive.rawValue,
                             selectedTip: $selectedTip,
@@ -69,8 +66,10 @@ struct ChooseTipView: View {
                             selectedTip: $selectedTip,
                             tipPercentage: $tipPercentage
                         )
-                        
-                    } else {
+                    }
+                }
+                if !isIPad {
+                    HStack {
                         SelectButtonView(
                             percentage: TipPercentage.twentyFive.rawValue,
                             selectedTip: $selectedTip,
