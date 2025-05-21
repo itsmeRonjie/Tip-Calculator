@@ -30,7 +30,7 @@ struct TipCalculatorView: View {
                 VStack(alignment: .leading) {
                     EnterTotalView(bill: $tipModel.bill, isFocused: $isFocused)
 
-                    Text("Choose Tip View")
+                    ChooseTipView(tipPercentage: $tipModel.tipPercentage)
                 }
                 
                 SplitView(split: $tipModel.split, alignment: .leading)
@@ -56,6 +56,7 @@ struct TipCalculatorView: View {
         }
     }
 }
+
 #Preview {
     TipCalculatorView()
 }
