@@ -28,8 +28,8 @@ struct TipCalculatorView: View {
                 Spacer()
                 
                 VStack(alignment: .leading) {
-                    Text("Enter Total View")
-                    
+                    EnterTotalView(bill: $tipModel.bill, isFocused: $isFocused)
+
                     Text("Choose Tip View")
                 }
                 
